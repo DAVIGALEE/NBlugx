@@ -5,7 +5,7 @@
         </section>
         <section class="existing-posts">
             <h1>Existing Posts</h1>
-            <PostList isAdmin/>
+            <PostList isAdmin />
         </section>
     </div>
 </template>
@@ -19,7 +19,8 @@ export default{
     components:{
         PostList,
         AppButton
-    }
+    },
+   
 }
 
 </script>

@@ -1,23 +1,15 @@
 <template>
     <section class="post-list" >
-      <PostPreview id="1" 
+      <PostPreview 
+      v-for="post in posts"
+      :key="post.id"
+      :id="post.id" 
       :is-admin="isAdmin"
-      thumbnail="https://www.computersciencedegreehub.com/wp-content/uploads/2016/02/what-is-coding-1024x683.jpg"
-      title="Coding"
-      previewText="Coding is important for the future"
+      :thumbnail="post.thumbnail"
+      :title="post.title"
+      :previewText="post.previewText"
       />
-      <PostPreview id="2" 
-      :is-admin="isAdmin"
-      thumbnail="https://www.computersciencedegreehub.com/wp-content/uploads/2016/02/what-is-coding-1024x683.jpg"
-      title="Coding is cool"
-      previewText="Coding is important for the future"
-      />
-      <PostPreview id="3" 
-      :is-admin="isAdmin"
-      thumbnail="https://www.computersciencedegreehub.com/wp-content/uploads/2016/02/what-is-coding-1024x683.jpg"
-      title="Coding is not harmful"
-      previewText="Coding is important for the development"
-      />
+      
     </section>
 </template>
 
@@ -32,6 +24,10 @@ export default {
     isAdmin:{
       type:Boolean,
       default:false
+    },
+    posts:{
+      type:Array,
+      
     }
   }
 }
