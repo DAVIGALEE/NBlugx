@@ -1,7 +1,8 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+  mode:'universal',
   head: {
-    title: 'nuxtapp',
+    title: 'Nblugx',
     htmlAttrs: {
       lang: 'en'
     },
@@ -16,13 +17,20 @@ export default {
       {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Open+Sans'}
     ]
   },
-
+  loading:{color:'#fa923f',height:'4px',duration:5000},
+  loadingIndicator:{
+    name:'circle',
+    color:'#fa923f'
+  },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '~assets/styles/main.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~plugins/core.js',
+    
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -38,5 +46,10 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    standalone: true
+  },
+  transition:{
+    name:'fade',
+    mode:'out-in'
   }
 }

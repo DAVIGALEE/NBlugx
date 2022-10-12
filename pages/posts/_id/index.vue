@@ -3,7 +3,7 @@
         <section class="post">
             <h1 class="post-title">{{loadedPost.title}}</h1>
             <div class="post-details">
-                <div class="post-detail">Last updated on {{loadedPost.updatedDate}}</div>
+                <div class="post-detail">Last updated on {{loadedPost.updatedDate|date}}</div>
                 <div class="post-detail">Written By {{loadedPost.author}}</div>
             </div>
             <p>{{loadedPost.content}}</p>
@@ -15,22 +15,16 @@
 </template>
 
 <script>
-
+import axios from 'axios'
 export default {
-  asyncData(context,callback){
-    setTimeout(()=>{
-      callback(null,{
-        loadedPost:{   
-        id:"1", 
-        title: "First Post (ID " + context.params.id + ")", 
-        author:"David", 
-        updatedDate:new Date(),
-        content:'SOME DUMMY DUMMY DUMMY DUMMY DUMMY DUM lorem     lorem isLogin',
-        previewText: "lorem ipsum dolor",
-        thumbnail: "https://www.computersciencedegreehub.com/wp-content/uploads/2016/02/what-is-coding-1024x683.jpg"
-        }
-      })
-    },1000)
+  asyncData(context){
+   return axios.get('https://nuxtapp-30d3f-default-rtdb.europe-west1.firebasedatabase.app/posts/' + context.params.id + '.json')
+    .then(res=>{
+      return {
+        loadedPost:res.data
+      }
+    })
+    .catch(er=>console.log(er))
   }
 }
 
