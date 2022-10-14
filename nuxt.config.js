@@ -51,5 +51,16 @@ export default {
   transition:{
     name:'fade',
     mode:'out-in'
+  },
+  env:{
+    apiKey:"AIzaSyCGAzoS0E-1kQC46PkAgUD6s_7vX_XkHLQ"
+  },
+  router:{
+    extendedRoutes(routes,resolve){
+      routes.push({
+        path:'*',
+        component:resolve(__dirname, 'pages/index.vue')
+      })
+    }
   }
 }
